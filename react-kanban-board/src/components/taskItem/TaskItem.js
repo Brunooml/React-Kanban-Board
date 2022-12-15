@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./TaskItem.css";
 import PropTypes from "prop-types";
 
-function TaskItem({ id, title, taskState, onTaskUpdate}){
+function TaskItem({ id, title, taskState, onTaskUpdate, onDeleteTask }){
   const [isEditing, setIsEditing] = useState(false);
   const [editableTitle, setEditableTitle] = useState(title);
 
@@ -15,7 +15,14 @@ function TaskItem({ id, title, taskState, onTaskUpdate}){
   const onKeyPress = (event) => {
     if(event.key === 'Enter'){
       setIsEditing(false);
+      if(editableTitle.length === 0){
+        onDeleteTask(id);
+      }
     }
+  };
+
+  const onTaskStateChange = (event) => {
+    onTaskUpdate(id, title, event.target.value)
   };
 
   if(isEditing) {
@@ -23,7 +30,14 @@ function TaskItem({ id, title, taskState, onTaskUpdate}){
   };
 
   return(
+    <div>
     <div onClick={(event) => setIsEditing(true) }>{ editableTitle }</div>
+    <select onChange={ onTaskStateChange } value={ taskState }>
+      <option value="Pendente">Pendente</option>
+      <option value="Fazendo">Fazendo</option>
+      <option value="Completa">Completa</option>
+    </select>
+    </div>
   )
 };
 

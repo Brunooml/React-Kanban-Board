@@ -36,12 +36,18 @@ function App() {
     });
   };
 
+  const deleteTask = (id) => {
+    setTasks((currentTasks) => {
+        return currentTasks.filter((task) => task.id !== id);
+    });
+  };
+
   return (
     <div className="App">
       <Navbar />
-      <TaskList title="Pendente" onAddTask={ addTask } tasks={ tasks.filter(task => task.state === 'Pendente') } onTaskUpdate={ updateTask } taskState="Pendente"/>
-      <TaskList title="Fazendo" onAddTask={ addTask } tasks={ tasks.filter(task => task.state === 'Fazendo') } onTaskUpdate={ updateTask } taskState="Fazendo"/>
-      <TaskList title="Completa" onAddTask={ addTask } tasks={ tasks.filter(task => task.state === 'Completa') } onTaskUpdate={ updateTask } taskState="Completa"/>
+      <TaskList title="Pendente" onAddTask={ addTask } tasks={ tasks.filter(task => task.state === 'Pendente') } onTaskUpdate={ updateTask } taskState="Pendente" onDeleteTask={ deleteTask }/>
+      <TaskList title="Fazendo" onAddTask={ addTask } tasks={ tasks.filter(task => task.state === 'Fazendo') } onTaskUpdate={ updateTask } taskState="Fazendo" onDeleteTask={ deleteTask }/>
+      <TaskList title="Completa" onAddTask={ addTask } tasks={ tasks.filter(task => task.state === 'Completa') } onTaskUpdate={ updateTask } taskState="Completa" onDeleteTask={ deleteTask }/>
     </div>
   );
 };
