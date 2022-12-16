@@ -26,7 +26,11 @@ function TaskItem({ id, title, taskState, onTaskUpdate, onDeleteTask }){
   };
 
   if(isEditing) {
-    return <input type="text" value={ editableTitle } onChange={ onTitleChange } onKeyPress={ onKeyPress }></input>
+    return ( 
+    <div className="task-item">
+      <input type="text" value={ editableTitle } onChange={ onTitleChange } onKeyPress={ onKeyPress }></input>
+    </div>
+    )
   };
 
   return(

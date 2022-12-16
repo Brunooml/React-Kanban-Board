@@ -17,13 +17,6 @@
   flex-direction: column;
 }
 
-.tasklist .content .empty-list {
-  text-align: center;
-  border: 1px dashed white;
-  border-radius: 4px;
-  padding: 4px;
-}
-
 .tasklist .btn {
   margin-top: 8px;
   padding: 8px;

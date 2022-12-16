@@ -18,7 +18,8 @@ function TaskList({ title, taskState, onAddTask, tasks, onTaskUpdate, onDeleteTa
           return <TaskItem key={ task.id } id={ task.id } title={ task.title } taskState={ task.state } onTaskUpdate={ onTaskUpdate } onDeleteTask={ onDeleteTask }/>
         })}
       </div>
-    <button onClick={addTask}>Adicionar Tarefa</button>
+      { tasks.length === 0 && <div>Lista Vazia</div> }
+    <button onClick={addTask} className="btn">Adicionar Tarefa</button>
     </div>
   )
 };
